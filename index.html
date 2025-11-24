@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exceed Productions DJ - Personal Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1571266028243-371695039989?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .text-glow {
+            text-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+        }
+        
+        /* Video Aspect Ratio */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe, .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4c1d95;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-black text-gray-100 font-sans antialiased selection:bg-violet-600 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <span class="text-xl font-bold tracking-tighter text-white">
+                        EXCEED <span class="text-violet-500">PRODUCTIONS</span>
+                    </span>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="hover:text-violet-400 transition-colors px-3 py-2 text-sm font-medium">About Me</a>
+                        <a href="#gear" class="hover:text-violet-400 transition-colors px-3 py-2 text-sm font-medium">My Gear</a>
+                        <a href="#contact" class="bg-violet-600 hover:bg-violet-700 text-white px-5 py-2 rounded-full text-sm font-medium transition-transform transform hover:scale-105">Get in Touch</a>
+                    </div>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 absolute w-full border-b border-gray-800">
+            <a href="#about" class="block py-3 px-4 text-sm hover:bg-gray-800 text-gray-300 mobile-link">About Me</a>
+            <a href="#gear" class="block py-3 px-4 text-sm hover:bg-gray-800 text-gray-300 mobile-link">My Gear</a>
+            <a href="#contact" class="block py-3 px-4 text-sm bg-violet-900/20 text-violet-400 mobile-link">Contact Me</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center hero-gradient px-4">
+        <div class="text-center max-w-4xl mx-auto z-10">
+            <div class="inline-block mb-4 px-4 py-1 border border-violet-500 rounded-full bg-violet-900/20 backdrop-blur-sm animate-fade-in-up" style="animation-delay: 0.1s;">
+                <span id="hero-subtitle" class="text-violet-300 text-xs font-bold tracking-widest uppercase"></span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight text-glow animate-fade-in-up" style="animation-delay: 0.3s;">
+                <span id="hero-title-part1"></span><br>
+                <span id="hero-title-part2" class="text-violet-500"></span>
+            </h1>
+            <p id="hero-description" class="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto font-light animate-fade-in-up" style="animation-delay: 0.5s;">
+            </p>
+            <a href="#about" class="inline-flex items-center text-white hover:text-violet-400 transition-colors animate-fade-in-up" style="animation-delay: 0.7s;">
+                <span class="mr-2">Meet the DJ</span>
+                <i class="fas fa-arrow-down animate-bounce"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-24 bg-black">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                
+                <!-- Left Column: Bio & Video -->
+                <div class="space-y-10">
+                    <div>
+                        <h2 class="text-4xl font-bold text-white mb-6">Hey, I'm <span id="about-name" class="text-violet-500"></span></h2>
+                        <div class="prose prose-invert prose-lg text-gray-400">
+                            <p id="about-bio-p1" class="mb-4"></p>
+                            <p id="about-bio-p2"></p>
+                        </div>
+                    </div>
+
+                    <!-- Video Container -->
+                    <div class="w-full bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 shadow-2xl relative group">
+                        <!-- Placeholder for Video -->
+                        <div class="video-container">
+                            <div class="absolute inset-0 flex items-center justify-center bg-gray-800 bg-[url('https://images.unsplash.com/photo-1525203135335-74d272fc8d9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80')] bg-cover bg-center">
+                                <div class="absolute inset-0 bg-black/50 transition-opacity group-hover:bg-black/40"></div>
+                                <button class="relative z-10 w-20 h-20 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 text-white transition-transform transform group-hover:scale-110 hover:bg-violet-600 hover:border-violet-600">
+                                    <i class="fas fa-play ml-1 text-2xl"></i>
+                                </button>
+                                <span class="absolute bottom-4 left-4 text-sm font-bold bg-black/60 px-3 py-1 rounded text-white">Watch Intro (1:30)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Photo Grid (Images remain hardcoded as they are asset references) -->
+                <div class="grid grid-cols-2 gap-4 auto-rows-[200px]">
+                    <!-- Photo 1 (Tall) -->
+                    <div class="row-span-2 relative group overflow-hidden rounded-2xl">
+                        <img src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="DJ Performing" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    </div>
+                    <!-- Photo 2 -->
+                    <div class="relative group overflow-hidden rounded-2xl">
+                        <img src="https://images.unsplash.com/photo-1514525253440-b393452e8d26?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Crowd" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    </div>
+                    <!-- Photo 3 -->
+                    <div class="relative group overflow-hidden rounded-2xl">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Setup" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment / Gear Section -->
+    <section id="gear" class="py-20 bg-gray-900 border-y border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <i class="fas fa-sliders-h text-4xl text-violet-500 mb-4"></i>
+                <h2 id="gear-title" class="text-3xl font-bold text-white"></h2>
+                <p id="gear-subtitle" class="text-gray-400 mt-2"></p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <!-- Audio -->
+                <div class="bg-black/50 p-8 rounded-xl border border-gray-800 hover:border-violet-500 transition-colors">
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center justify-center md:justify-start">
+                        <i class="fas fa-volume-up text-violet-500 mr-3"></i> Audio
+                    </h3>
+                    <ul id="gear-audio-list" class="space-y-3 text-gray-400 text-sm">
+                        <!-- Content inserted by JS -->
+                    </ul>
+                </div>
+
+                <!-- Lighting -->
+                <div class="bg-black/50 p-8 rounded-xl border border-gray-800 hover:border-violet-500 transition-colors">
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center justify-center md:justify-start">
+                        <i class="fas fa-lightbulb text-violet-500 mr-3"></i> Lighting
+                    </h3>
+                    <ul id="gear-lighting-list" class="space-y-3 text-gray-400 text-sm">
+                        <!-- Content inserted by JS -->
+                    </ul>
+                </div>
+
+                <!-- Production -->
+                <div class="bg-black/50 p-8 rounded-xl border border-gray-800 hover:border-violet-500 transition-colors">
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center justify-center md:justify-start">
+                        <i class="fas fa-laptop text-violet-500 mr-3"></i> Production
+                    </h3>
+                    <ul id="gear-production-list" class="space-y-3 text-gray-400 text-sm">
+                        <!-- Content inserted by JS -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-black relative">
+        <div class="max-w-2xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-10">
+                <h2 id="contact-title" class="text-3xl font-bold text-white mb-2"></h2>
+                <p id="contact-subtitle" class="text-gray-400"></p>
+            </div>
+
+            <div class="bg-gray-900 rounded-2xl p-8 border border-gray-800 shadow-2xl">
+                
+                <!-- ACTION attribute remains linked to your Formspree link -->
+                <form id="contactForm" action="https://formspree.io/f/xpwezbgd" method="POST" class="space-y-5">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Your Name</label>
+                        <!-- Added name="name" which is required for Formspree -->
+                        <input type="text" name="name" required class="w-full bg-black border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-colors" placeholder="John Doe">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Email Address</label>
+                        <!-- Added name="_replyto" to ensure replies go to the user's email, as required by Formspree -->
+                        <input type="email" name="_replyto" required class="w-full bg-black border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-colors" placeholder="john@example.com">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Message</label>
+                        <!-- Added name="message" which is required for Formspree -->
+                        <textarea name="message" required rows="4" class="w-full bg-black border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-colors" placeholder="Tell me about your event..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-white text-black font-bold py-4 rounded-lg hover:bg-violet-400 transition-colors">
+                        Send Email
+                    </button>
+                    
+                    <!-- Form status message container -->
+                    <p id="formStatus" class="text-center text-sm mt-3 hidden"></p>
+                </form>
+
+                <!-- Success Message -->
+                <div id="successMessage" class="hidden text-center py-8">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-900/30 text-green-500 mb-4">
+                        <i class="fas fa-check text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Received!</h3>
+                    <p class="text-gray-400 mb-4">I'll get back to you as soon as I'm available.</p>
+                    <button id="resetBtn" class="text-sm text-violet-400 hover:text-white underline">Send another</button>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center text-gray-600 text-sm">
+                <p class="mb-2">Direct Contact</p>
+                <p id="contact-email" class="text-white text-lg font-bold mb-1"></p>
+                <p id="contact-phone" class="text-white text-lg font-bold"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-8 text-center text-gray-500 text-sm">
+        <p id="footer-text"></p>
+        <div class="mt-4 space-x-4">
+            <a href="#" class="hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+            <a href="#" class="hover:text-white"><i class="fab fa-facebook text-xl"></i></a>
+            <a href="#" class="hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // =================================================================
+        // 🚨 START EDITING HERE FOR ALL TEXT CONTENT 🚨
+        // =================================================================
+        const PAGE_CONTENT = {
+            // --- HERO SECTION ---
+            hero_subtitle: "Est. 2025",
+            hero_title_part1: "More Than Just Music.",
+            hero_title_part2: "It's an Experience.",
+            hero_description: "Let's EXCEED your expectations.",
+
+            // --- ABOUT ME SECTION ---
+            about_name: "Zachariah", // YOUR NAME HERE
+            about_bio_p1: "Hi, I'm Zach. I am a 25 year old wedding DJ residing in the Metro Detroit area. I started producing music around 12 years old. From 2021-2022 I had the opportunity to be trained by one of the best wedding DJ's in Maryland (Toussaint Productions), where I lived at the time. During that time I did 10 weddings, from small to large (200+ people) and received excellent feedback. Since moving back to Michigan I'm currently focused on building my own company. ",
+            about_bio_p2: "I am well versed in almost all genres of music. We can be conventional or take it outside the box, you decide!😄 You will able to share your songs/playlists with me and special dance music. I'll bring the gear, the lights, and the tunes. You bring the vision!",
+
+            // --- GEAR SECTION ---
+            gear_title: "My Arsenal",
+            gear_subtitle: "Professional grade tools for professional grade sound.",
+            gear_audio_items: [
+                "Traktor Pro S3 Controller",
+                "2x QSC K12.2 Active Speakers",
+                "QSC KS118 Subwoofer",
+                "Shure Wireless Mics"
+            ],
+            gear_lighting_items: [
+                "Chauvet GigBAR Move",
+                "8x Wireless Uplights",
+                "Moving Heads Spotlights",
+                "Haze Machine (Venue permitting)"
+            ],
+            gear_production_items: [
+                "MacBook Pro M2",
+                "Serato DJ Pro",
+                "Custom Facade Booth",
+                "Backup System Always Ready"
+            ],
+            
+            // --- CONTACT & FOOTER ---
+            contact_title: "Let's Talk",
+            contact_subtitle: "Have a question or want to check my availability? Drop me an email.",
+            contact_email: "exceedproductions@outlook.com", // YOUR EMAIL HERE
+            contact_phone: "(555) 123-4567", // YOUR PHONE NUMBER HERE
+            footer_text: "© 2023 Exceed Productions. All rights reserved."
+        };
+        // =================================================================
+        // 🛑 STOP EDITING HERE - All layout logic is below 🛑
+        // =================================================================
+
+        // Configuration for Rate Limiting (30 minutes in milliseconds)
+        const RATE_LIMIT_MS = 30 * 60 * 1000; 
+        const LAST_SUBMISSION_KEY = 'lastContactSubmission';
+
+        // Helper function to format time remaining
+        function formatTimeRemaining(ms) {
+            const totalSeconds = Math.ceil(ms / 1000);
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+
+            let result = '';
+            if (minutes > 0) {
+                result += `${minutes} minute${minutes !== 1 ? 's' : ''}`;
+            }
+            if (seconds > 0) {
+                if (result) result += ' and ';
+                result += `${seconds} second${seconds !== 1 ? 's' : ''}`;
+            }
+            return result;
+        }
+
+        // Helper function to create list items dynamically
+        function createList(id, items) {
+            const list = document.getElementById(id);
+            if (!list) return;
+
+            list.innerHTML = ''; // Clear existing content
+            items.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'flex items-center justify-center md:justify-start';
+                li.innerHTML = `<span class="w-1.5 h-1.5 bg-gray-600 rounded-full mr-2"></span> ${item}`;
+                list.appendChild(li);
+            });
+        }
+
+        // Function to inject all content into the DOM
+        function loadContent() {
+            // Hero
+            document.getElementById('hero-subtitle').textContent = PAGE_CONTENT.hero_subtitle;
+            document.getElementById('hero-title-part1').textContent = PAGE_CONTENT.hero_title_part1;
+            document.getElementById('hero-title-part2').textContent = PAGE_CONTENT.hero_title_part2;
+            document.getElementById('hero-description').textContent = PAGE_CONTENT.hero_description;
+
+            // About
+            document.getElementById('about-name').textContent = PAGE_CONTENT.about_name;
+            document.getElementById('about-bio-p1').textContent = PAGE_CONTENT.about_bio_p1;
+            document.getElementById('about-bio-p2').textContent = PAGE_CONTENT.about_bio_p2;
+
+            // Gear
+            document.getElementById('gear-title').textContent = PAGE_CONTENT.gear_title;
+            document.getElementById('gear-subtitle').textContent = PAGE_CONTENT.gear_subtitle;
+            createList('gear-audio-list', PAGE_CONTENT.gear_audio_items);
+            createList('gear-lighting-list', PAGE_CONTENT.gear_lighting_items);
+            createList('gear-production-list', PAGE_CONTENT.gear_production_items);
+
+            // Contact
+            document.getElementById('contact-title').textContent = PAGE_CONTENT.contact_title;
+            document.getElementById('contact-subtitle').textContent = PAGE_CONTENT.contact_subtitle;
+            document.getElementById('contact-email').textContent = PAGE_CONTENT.contact_email;
+            document.getElementById('contact-phone').textContent = PAGE_CONTENT.contact_phone;
+
+            // Footer
+            document.getElementById('footer-text').textContent = PAGE_CONTENT.footer_text;
+        }
+
+        // --- Core Page Logic ---
+
+        // CRITICAL CHANGE: Use DOMContentLoaded for reliable content loading
+        document.addEventListener('DOMContentLoaded', () => {
+            loadContent();
+            
+            // Mobile Menu Logic
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileMenu) mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Form Logic
+            const form = document.getElementById('contactForm');
+            const submitButton = form ? form.querySelector('button[type="submit"]') : null;
+            const successMsg = document.getElementById('successMessage');
+            const resetBtn = document.getElementById('resetBtn');
+            const formStatus = document.getElementById('formStatus');
+            let countdownInterval = null;
+
+            // Ensure all form elements exist before attaching listeners
+            if (!form || !submitButton || !successMsg || !resetBtn || !formStatus) {
+                console.error("One or more critical form elements are missing. Cannot initialize form logic.");
+                return;
+            }
+
+            // Function to update the countdown text
+            function startCountdown(timeRemaining) {
+                clearInterval(countdownInterval); // Clear any existing interval
+
+                const updateTime = () => {
+                    let remaining = timeRemaining;
+                    if (remaining <= 0) {
+                        clearInterval(countdownInterval);
+                        formStatus.classList.add('hidden');
+                        submitButton.disabled = false;
+                        submitButton.innerText = 'Send Email';
+                        return;
+                    }
+                    
+                    formStatus.innerText = `Please wait ${formatTimeRemaining(remaining)} before sending another message.`;
+                    
+                    timeRemaining -= 1000; // Decrement by 1 second
+                };
+
+                updateTime(); // Run immediately
+                countdownInterval = setInterval(updateTime, 1000);
+            }
+
+            // Function to check rate limit and potentially disable the button
+            function checkRateLimit() {
+                const lastSubmissionTime = localStorage.getItem(LAST_SUBMISSION_KEY);
+                if (lastSubmissionTime) {
+                    const elapsedTime = Date.now() - parseInt(lastSubmissionTime, 10);
+                    const timeRemaining = RATE_LIMIT_MS - elapsedTime;
+
+                    if (timeRemaining > 0) {
+                        submitButton.disabled = true;
+                        submitButton.innerText = 'Rate Limited';
+                        formStatus.classList.remove('hidden', 'text-red-500');
+                        formStatus.classList.add('text-yellow-500');
+                        startCountdown(timeRemaining);
+                    }
+                }
+            }
+
+            // Initial check when the page loads
+            checkRateLimit();
+
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const originalText = submitButton.innerText;
+                const action = form.getAttribute('action');
+                
+                formStatus.classList.add('hidden'); // Clear previous status
+                formStatus.classList.remove('text-red-500', 'text-yellow-500'); // Clear previous colors
+
+                // 1. RATE LIMIT CHECK (Final check before submission attempt)
+                const lastSubmissionTime = localStorage.getItem(LAST_SUBMISSION_KEY);
+                const currentTime = Date.now();
+                
+                if (lastSubmissionTime) {
+                    const elapsedTime = currentTime - parseInt(lastSubmissionTime, 10);
+                    
+                    if (elapsedTime < RATE_LIMIT_MS) {
+                        const timeRemaining = RATE_LIMIT_MS - elapsedTime;
+                        formStatus.innerText = `Please wait ${formatTimeRemaining(timeRemaining)} before sending another message.`;
+                        formStatus.classList.remove('hidden');
+                        formStatus.classList.add('text-yellow-500');
+                        return; 
+                    }
+                }
+
+                // 2. PROCEED WITH SUBMISSION
+                submitButton.innerText = 'Sending...';
+                submitButton.disabled = true;
+
+                try {
+                    const response = await fetch(action, {
+                        method: form.method,
+                        body: new FormData(form),
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        // 3. Save new submission time on success and start countdown
+                        localStorage.setItem(LAST_SUBMISSION_KEY, Date.now());
+
+                        form.classList.add('hidden');
+                        successMsg.classList.remove('hidden');
+                        form.reset();
+                        
+                        // Start rate limit again immediately after success
+                        checkRateLimit(); 
+                    } else {
+                        const data = await response.json();
+                        if (Object.hasOwn(data, 'errors')) {
+                            formStatus.innerText = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            formStatus.innerText = "Oops! There was a problem sending your form. Please check your Formspree setup.";
+                        }
+                        formStatus.classList.remove('hidden');
+                        formStatus.classList.add('text-red-500');
+                    }
+                } catch (error) {
+                    formStatus.innerText = "Oops! Network error occurred.";
+                    formStatus.classList.remove('hidden');
+                    formStatus.classList.add('text-red-500');
+                } finally {
+                    // Only re-enable the button if we didn't hit a rate limit error inside the try/catch
+                    if (!submitButton.disabled) {
+                        submitButton.innerText = originalText;
+                        submitButton.disabled = false;
+                    }
+                }
+            });
+
+            resetBtn.addEventListener('click', () => {
+                clearInterval(countdownInterval);
+                successMsg.classList.add('hidden');
+                form.classList.remove('hidden');
+                formStatus.classList.add('hidden');
+                // Re-check rate limit in case the user resets right after success
+                checkRateLimit(); 
+            });
+        });
+    </script>
+</body>
+</html>
+
