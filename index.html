@@ -45,7 +45,7 @@
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0 cursor-pointer" onclick="window.scrollTo(0,0)">
                     <span class="text-xl font-bold tracking-tighter text-white">
@@ -95,71 +95,83 @@
         </div>
     </section>
 
-    <!-- About Me Section -->
+    <!-- About Me & Gallery Section -->
     <section id="about" class="py-24 bg-black">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                
-                <!-- Left Column: Bio & Videos -->
-                <div class="space-y-10">
-                    <div>
-                        <h2 class="text-4xl font-bold text-white mb-6">Hey, I'm <span id="about-name" class="text-violet-500"></span></h2>
-                        <div class="prose prose-invert prose-lg text-gray-400">
-                            <p id="about-bio-p1" class="mb-4"></p>
-                            <p id="about-bio-p2"></p>
-                        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Bio (Centered & Prominent) -->
+            <div class="max-w-3xl mx-auto text-center mb-20">
+                <h2 class="text-4xl font-bold text-white mb-8">Hey, I'm <span id="about-name" class="text-violet-500"></span></h2>
+                <div class="prose prose-invert prose-lg text-gray-300 mx-auto leading-relaxed">
+                    <p id="about-bio-p1" class="mb-4"></p>
+                    <p id="about-bio-p2"></p>
+                </div>
+            </div>
+
+            <!-- Visual Experience Title -->
+            <div class="text-center mb-12">
+                <span class="text-violet-500 font-bold tracking-widest uppercase text-sm">See The Vibe</span>
+                <h3 class="text-3xl font-bold text-white mt-2">Visual Experience</h3>
+            </div>
+
+            <!-- Video Gallery (Large Grid) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Video 1 -->
+                <div class="w-full bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 shadow-2xl group hover:border-violet-500 transition-all duration-500 transform hover:-translate-y-1">
+                    <div class="aspect-video bg-black relative">
+                        <video controls class="w-full h-full object-cover" preload="metadata">
+                            <source src="specialdancevideo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
-
-                    <!-- Video Gallery (Replaced single video placeholder) -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <!-- Video 1 -->
-                        <div class="w-full bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 shadow-2xl group hover:border-violet-500 transition-colors duration-300">
-                            <div class="aspect-video bg-black relative">
-                                <video controls class="w-full h-full object-contain" preload="metadata">
-                                    <source src="specialdancevideo.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                            <div class="p-3 bg-gray-900 border-t border-gray-800">
-                                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest text-center group-hover:text-violet-400 transition-colors">Special Moments</p>
-                            </div>
-                        </div>
-
-                        <!-- Video 2 -->
-                        <div class="w-full bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 shadow-2xl group hover:border-violet-500 transition-colors duration-300">
-                            <div class="aspect-video bg-black relative">
-                                <video controls class="w-full h-full object-contain" preload="metadata">
-                                    <source src="opendancevideo.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                            <div class="p-3 bg-gray-900 border-t border-gray-800">
-                                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest text-center group-hover:text-violet-400 transition-colors">Open Dance Floor</p>
-                            </div>
-                        </div>
+                    <div class="p-4 bg-gray-900 border-t border-gray-800">
+                        <p class="text-sm font-bold text-gray-300 uppercase tracking-widest text-center group-hover:text-violet-400 transition-colors">Special Moments</p>
                     </div>
                 </div>
 
-                <!-- Right Column: Photo Grid -->
-                <div class="grid grid-cols-2 gap-4 auto-rows-[200px]">
-                    <!-- Photo 1 (Tall) - Full Body -->
-                    <div class="row-span-2 relative group overflow-hidden rounded-2xl border border-gray-800">
-                        <img src="fullbody2.jpg" alt="DJ Performing" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
-                        <!-- Subtle overlay on hover -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                <!-- Video 2 -->
+                <div class="w-full bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 shadow-2xl group hover:border-violet-500 transition-all duration-500 transform hover:-translate-y-1">
+                    <div class="aspect-video bg-black relative">
+                        <video controls class="w-full h-full object-cover" preload="metadata">
+                            <source src="opendancevideo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
-                    <!-- Photo 2 - Crowd -->
-                    <div class="relative group overflow-hidden rounded-2xl border border-gray-800">
-                        <img src="crowd2.jpg" alt="Crowd Energy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                    </div>
-                    <!-- Photo 3 - Crowd 2 -->
-                    <div class="relative group overflow-hidden rounded-2xl border border-gray-800">
-                        <img src="crowd1.jpg" alt="Event Atmosphere" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                    <div class="p-4 bg-gray-900 border-t border-gray-800">
+                        <p class="text-sm font-bold text-gray-300 uppercase tracking-widest text-center group-hover:text-violet-400 transition-colors">Open Dance Floor</p>
                     </div>
                 </div>
             </div>
+
+            <!-- Photo Gallery (Large Mosaic) -->
+            <!-- Increased row height to 300px mobile / 400px desktop for MUCH bigger photos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-[300px] md:auto-rows-[450px]">
+                
+                <!-- Photo 1 (Tall - Full Body) spans 2 rows on desktop -->
+                <div class="row-span-2 relative group overflow-hidden rounded-2xl border border-gray-800 hover:border-violet-500 transition-colors duration-500">
+                    <img src="fullbody2.jpg" alt="DJ Performing" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none flex items-end p-6">
+                        <span class="text-white font-bold">Live Performance</span>
+                    </div>
+                </div>
+
+                <!-- Photo 2 (Crowd) -->
+                <div class="relative group overflow-hidden rounded-2xl border border-gray-800 hover:border-violet-500 transition-colors duration-500">
+                    <img src="crowd2.jpg" alt="Crowd Energy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none flex items-end p-6">
+                        <span class="text-white font-bold">Packed Dancefloor</span>
+                    </div>
+                </div>
+
+                <!-- Photo 3 (Crowd 2) -->
+                <div class="relative group overflow-hidden rounded-2xl border border-gray-800 hover:border-violet-500 transition-colors duration-500">
+                    <img src="crowd1.jpg" alt="Event Atmosphere" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none flex items-end p-6">
+                        <span class="text-white font-bold">Unforgettable Nights</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
