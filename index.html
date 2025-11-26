@@ -39,11 +39,6 @@
             background: #4c1d95;
             border-radius: 4px;
         }
-
-        /* Lightbox Specific Styles */
-        .lightbox-open {
-            overflow: hidden;
-        }
     </style>
 </head>
 <body class="bg-black text-gray-100 font-sans antialiased selection:bg-violet-600 selection:text-white">
@@ -110,34 +105,28 @@
                 </div>
             </div>
 
-            <!-- Photo Gallery (Large Mosaic) -->
-            <!-- Added lightbox triggers and overlays -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-[350px] md:auto-rows-[450px] mb-12">
+            <!-- Photo Gallery (Auto-Fitting Layout) -->
+            <!-- Using grid for layout, but natural aspect ratios for images -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
                 
-                <!-- Photo 1 (Tall - Full Body) -->
-                <div class="row-span-2 relative group overflow-hidden rounded-2xl border border-gray-800 hover:border-violet-500 transition-colors duration-500 cursor-zoom-in lightbox-trigger">
-                    <img src="fullbody2.jpg" alt="DJ Performing" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <!-- Lightbox Overlay -->
-                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                        <i class="fas fa-expand-alt text-white text-3xl drop-shadow-lg"></i>
-                    </div>
+                <!-- Left Column: Tall Image -->
+                <!-- We keep h-full object-cover here so it stretches to match the height of the right column on desktop -->
+                <div class="relative group overflow-hidden rounded-2xl border border-gray-800 h-full">
+                    <img src="fullbody2.jpg" alt="DJ Performing" class="w-full h-full object-cover min-h-[400px]">
                 </div>
 
-                <!-- Photo 2 (Crowd) -->
-                <div class="row-span-1 relative group overflow-hidden rounded-2xl border border-gray-800 hover:border-violet-500 transition-colors duration-500 cursor-zoom-in lightbox-trigger">
-                    <img src="crowd2.jpg" alt="Crowd Energy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <!-- Lightbox Overlay -->
-                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                        <i class="fas fa-expand-alt text-white text-3xl drop-shadow-lg"></i>
+                <!-- Right Column: Stacked Landscape Images -->
+                <div class="flex flex-col gap-6">
+                    <!-- Top: Crowd 2 (16:9) -->
+                    <div class="relative group overflow-hidden rounded-2xl border border-gray-800">
+                        <!-- w-full h-auto ensures NO cropping, full width visible -->
+                        <img src="crowd2.jpg" alt="Crowd Energy" class="w-full h-auto block">
                     </div>
-                </div>
-
-                <!-- Photo 3 (Crowd 2) -->
-                <div class="row-span-1 relative group overflow-hidden rounded-2xl border border-gray-800 hover:border-violet-500 transition-colors duration-500 cursor-zoom-in lightbox-trigger">
-                    <img src="crowd1.jpg" alt="Event Atmosphere" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <!-- Lightbox Overlay -->
-                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                        <i class="fas fa-expand-alt text-white text-3xl drop-shadow-lg"></i>
+                    
+                    <!-- Bottom: Crowd 1 (4:3) -->
+                    <div class="relative group overflow-hidden rounded-2xl border border-gray-800">
+                        <!-- w-full h-auto ensures NO cropping, full width visible -->
+                        <img src="crowd1.jpg" alt="Event Atmosphere" class="w-full h-auto block">
                     </div>
                 </div>
             </div>
@@ -272,19 +261,6 @@
             <a href="#" class="hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
         </div>
     </footer>
-
-    <!-- NEW LIGHTBOX MODAL SYSTEM -->
-    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-md hidden items-center justify-center opacity-0 transition-opacity duration-300">
-        <!-- Close Button -->
-        <button id="lightbox-close" class="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors z-[110]">
-            <i class="fas fa-times text-4xl"></i>
-        </button>
-        
-        <!-- Image Container -->
-        <div class="relative w-full h-full p-4 md:p-10 flex items-center justify-center">
-            <img id="lightbox-img" src="" alt="Full Screen View" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl">
-        </div>
-    </div>
 
     <script>
         // =================================================================
@@ -421,65 +397,6 @@
                 });
             });
 
-            // --- LIGHTBOX LOGIC ---
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            const lightboxClose = document.getElementById('lightbox-close');
-            const triggers = document.querySelectorAll('.lightbox-trigger');
-
-            function openLightbox(imgSrc) {
-                lightboxImg.src = imgSrc;
-                lightbox.classList.remove('hidden');
-                // Small delay to allow display:flex to apply before adding opacity
-                setTimeout(() => {
-                    lightbox.classList.remove('opacity-0');
-                    lightbox.classList.add('flex');
-                    document.body.classList.add('lightbox-open');
-                }, 10);
-            }
-
-            function closeLightbox() {
-                lightbox.classList.add('opacity-0');
-                setTimeout(() => {
-                    lightbox.classList.add('hidden');
-                    lightbox.classList.remove('flex');
-                    document.body.classList.remove('lightbox-open');
-                    lightboxImg.src = '';
-                }, 300);
-            }
-
-            triggers.forEach(trigger => {
-                trigger.addEventListener('click', (e) => {
-                    // Prevent default anchor behavior if wrapped in link
-                    e.preventDefault(); 
-                    const img = trigger.querySelector('img');
-                    if (img) {
-                        openLightbox(img.src);
-                    }
-                });
-            });
-
-            if (lightboxClose) {
-                lightboxClose.addEventListener('click', closeLightbox);
-            }
-
-            if (lightbox) {
-                lightbox.addEventListener('click', (e) => {
-                    // Close if clicking outside the image
-                    if (e.target === lightbox || e.target.closest('.relative') === null) {
-                        if (e.target !== lightboxImg) {
-                            closeLightbox();
-                        }
-                    }
-                });
-            }
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && lightbox && !lightbox.classList.contains('hidden')) {
-                    closeLightbox();
-                }
-            });
-
             // --- FORM LOGIC ---
             const form = document.getElementById('contactForm');
             const submitButton = form ? form.querySelector('button[type="submit"]') : null;
@@ -581,35 +498,3 @@
                         
                         checkRateLimit(); 
                     } else {
-                        const data = await response.json();
-                        if (Object.hasOwn(data, 'errors')) {
-                            formStatus.innerText = data["errors"].map(error => error["message"]).join(", ");
-                        } else {
-                            formStatus.innerText = "Oops! There was a problem sending your form. Please check your Formspree setup.";
-                        }
-                        formStatus.classList.remove('hidden');
-                        formStatus.classList.add('text-red-500');
-                    }
-                } catch (error) {
-                    formStatus.innerText = "Oops! Network error occurred.";
-                    formStatus.classList.remove('hidden');
-                    formStatus.classList.add('text-red-500');
-                } finally {
-                    if (!submitButton.disabled) {
-                        submitButton.innerText = originalText;
-                        submitButton.disabled = false;
-                    }
-                }
-            });
-
-            resetBtn.addEventListener('click', () => {
-                clearInterval(countdownInterval);
-                successMsg.classList.add('hidden');
-                form.classList.remove('hidden');
-                formStatus.classList.add('hidden');
-                checkRateLimit(); 
-            });
-        });
-    </script>
-</body>
-</html>
