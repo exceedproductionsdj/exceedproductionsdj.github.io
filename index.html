@@ -431,12 +431,14 @@
                     carouselImg.src = photoSources[currentPhotoIndex];
                     
                     // Custom positioning for crowd2.jpg
+                    // 🚨 DIAL IT IN HERE: 
+                    // 100% = Right edge aligns with screen
+                    // 50% = Center aligns with screen
+                    // 80% = Right edge is slightly off screen (shifted left)
                     if (photoSources[currentPhotoIndex] === 'crowd2.jpg') {
-                        carouselImg.classList.remove('object-center');
-                        carouselImg.classList.add('object-right');
+                        carouselImg.style.objectPosition = '80% 50%'; 
                     } else {
-                        carouselImg.classList.remove('object-right');
-                        carouselImg.classList.add('object-center');
+                        carouselImg.style.objectPosition = '50% 50%'; // Center
                     }
 
                     carouselImg.style.opacity = '1';
