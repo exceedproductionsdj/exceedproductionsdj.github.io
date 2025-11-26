@@ -30,6 +30,7 @@
         
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
+            height: 8px; /* Horizontal scrollbar height */
             width: 8px;
         }
         ::-webkit-scrollbar-track {
@@ -93,64 +94,69 @@
     </section>
 
     <!-- About Me & Gallery Section -->
-    <section id="about" class="py-24 bg-black">
+    <section id="about" class="py-24 bg-black overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Bio (Centered & Prominent) -->
-            <div class="max-w-3xl mx-auto text-center mb-20">
-                <h2 class="text-4xl font-bold text-white mb-8">Hey, I'm <span id="about-name" class="text-violet-500"></span></h2>
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <!-- Updated Title Structure: Just the name -->
+                <h2 id="about-name" class="text-4xl font-bold text-violet-500 mb-8"></h2>
                 <div class="prose prose-invert prose-lg text-gray-300 mx-auto leading-relaxed">
                     <p id="about-bio-p1" class="mb-4"></p>
                     <p id="about-bio-p2"></p>
                 </div>
             </div>
 
-            <!-- Photo Gallery (Auto-Fitting Layout) -->
-            <!-- Using grid for layout, but natural aspect ratios for images -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
-                
-                <!-- Left Column: Tall Image -->
-                <!-- We keep h-full object-cover here so it stretches to match the height of the right column on desktop -->
-                <div class="relative group overflow-hidden rounded-2xl border border-gray-800 h-full">
-                    <img src="fullbody2.jpg" alt="DJ Performing" class="w-full h-full object-cover min-h-[400px]">
-                </div>
+            <!-- Horizontal Scrollable Photo Gallery -->
+            <div class="mb-16">
+                <h3 class="text-xl font-bold text-white mb-4 pl-1">Photos</h3>
+                <!-- Flex container with overflow-x-auto for horizontal scrolling -->
+                <div class="flex overflow-x-auto gap-6 pb-6 snap-x snap-mandatory">
+                    
+                    <!-- Photo 1 (Tall Image) -->
+                    <!-- h-[500px] ensures consistent height, w-auto allows full width to show -->
+                    <div class="flex-none h-[500px] w-auto snap-center relative group overflow-hidden rounded-2xl border border-gray-800">
+                        <img src="fullbody2.jpg" alt="DJ Performing" class="h-full w-auto max-w-none object-cover">
+                    </div>
 
-                <!-- Right Column: Stacked Landscape Images -->
-                <div class="flex flex-col gap-6">
-                    <!-- Top: Crowd 2 (16:9) -->
-                    <div class="relative group overflow-hidden rounded-2xl border border-gray-800">
-                        <!-- w-full h-auto ensures NO cropping, full width visible -->
-                        <img src="crowd2.jpg" alt="Crowd Energy" class="w-full h-auto block">
+                    <!-- Photo 2 (Crowd) -->
+                    <div class="flex-none h-[500px] w-auto snap-center relative group overflow-hidden rounded-2xl border border-gray-800">
+                        <img src="crowd2.jpg" alt="Crowd Energy" class="h-full w-auto max-w-none object-cover">
                     </div>
                     
-                    <!-- Bottom: Crowd 1 (4:3) -->
-                    <div class="relative group overflow-hidden rounded-2xl border border-gray-800">
-                        <!-- w-full h-auto ensures NO cropping, full width visible -->
-                        <img src="crowd1.jpg" alt="Event Atmosphere" class="w-full h-auto block">
+                    <!-- Photo 3 (Crowd 2) -->
+                    <div class="flex-none h-[500px] w-auto snap-center relative group overflow-hidden rounded-2xl border border-gray-800">
+                        <img src="crowd1.jpg" alt="Event Atmosphere" class="h-full w-auto max-w-none object-cover">
                     </div>
+
                 </div>
             </div>
 
-            <!-- Video Gallery (Large Grid) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Video 1 -->
-                <div class="w-full bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 shadow-2xl group hover:border-violet-500 transition-all duration-500 transform hover:-translate-y-1">
-                    <div class="aspect-video bg-black relative">
-                        <video controls class="w-full h-full object-cover" preload="metadata">
-                            <source src="specialdancevideo.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+            <!-- Horizontal Scrollable Video Gallery -->
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4 pl-1">Videos</h3>
+                <div class="flex overflow-x-auto gap-6 pb-6 snap-x snap-mandatory">
+                    
+                    <!-- Video 1 -->
+                    <div class="flex-none w-[85vw] md:w-[600px] snap-center bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 shadow-2xl">
+                        <div class="aspect-video bg-black relative">
+                            <video controls class="w-full h-full object-cover" preload="metadata">
+                                <source src="specialdancevideo.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Video 2 -->
-                <div class="w-full bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 shadow-2xl group hover:border-violet-500 transition-all duration-500 transform hover:-translate-y-1">
-                    <div class="aspect-video bg-black relative">
-                        <video controls class="w-full h-full object-cover" preload="metadata">
-                            <source src="opendancevideo.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                    <!-- Video 2 -->
+                    <div class="flex-none w-[85vw] md:w-[600px] snap-center bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 shadow-2xl">
+                        <div class="aspect-video bg-black relative">
+                            <video controls class="w-full h-full object-cover" preload="metadata">
+                                <source src="opendancevideo.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
                     </div>
+
                 </div>
             </div>
 
@@ -274,7 +280,7 @@
 
             // --- ABOUT ME SECTION ---
             about_name: "Zachariah", // YOUR NAME HERE
-            about_bio_p1: "I'm Zach, a Metro Detroit DJ who's been obsessed with music since I started producing at 12. After training with top-tier pros in Maryland and rocking weddings of all sizes, I'm back in Michigan doing what I love—building Exceed Productions.",
+            about_bio_p1: "I'm Zach, a Metro Detroit DJ who's been obsessed with music since I started producing at 12. After training with professionals in Maryland and rocking weddings of all sizes, I'm back in Michigan doing what I love—building Exceed Productions.",
             about_bio_p2: "My style is simple: I read the room and keep the energy right. Whether you want strictly conventional or totally out of the box, I've got you covered. You bring the vision, I'll handle the gear, the lights, and the soundtrack.",
 
             // --- GEAR SECTION ---
