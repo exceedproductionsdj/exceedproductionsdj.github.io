@@ -79,7 +79,6 @@
     <!-- Hero Section -->
     <section class="relative h-screen flex items-center justify-center hero-gradient px-4">
         <div class="text-center max-w-4xl mx-auto z-10">
-            <!-- Removed the "Est. 2025" subtitle block for a cleaner look -->
             <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight text-glow animate-fade-in-up" style="animation-delay: 0.3s;">
                 <span id="hero-title-part1"></span><br>
                 <span id="hero-title-part2" class="text-violet-500"></span>
@@ -106,30 +105,27 @@
                 </div>
             </div>
 
-            <!-- Photo Gallery (Large Mosaic) - Now First -->
-            <!-- Increased row height to 300px mobile / 400px desktop for MUCH bigger photos -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-[300px] md:auto-rows-[450px] mb-12">
+            <!-- Photo Gallery (Large Mosaic) -->
+            <!-- auto-rows-[350px] is slightly taller for mobile to ensure less cropping overall -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-[350px] md:auto-rows-[450px] mb-12">
                 
-                <!-- Photo 1 (Tall - Full Body) spans 2 rows on desktop -->
+                <!-- Photo 1 (Tall - Full Body) spans 2 rows on desktop and mobile for max visibility -->
                 <div class="row-span-2 relative group overflow-hidden rounded-2xl border border-gray-800 hover:border-violet-500 transition-colors duration-500">
                     <img src="fullbody2.jpg" alt="DJ Performing" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <!-- Removed Text Overlay & Grayscale -->
                 </div>
 
-                <!-- Photo 2 (Crowd) -->
-                <div class="relative group overflow-hidden rounded-2xl border border-gray-800 hover:border-violet-500 transition-colors duration-500">
+                <!-- Photo 2 (Crowd) - Landscape image, so we ensure it only spans 1 row on mobile to reduce vertical cropping -->
+                <div class="row-span-1 relative group overflow-hidden rounded-2xl border border-gray-800 hover:border-violet-500 transition-colors duration-500">
                     <img src="crowd2.jpg" alt="Crowd Energy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <!-- Removed Text Overlay & Grayscale -->
                 </div>
 
-                <!-- Photo 3 (Crowd 2) -->
-                <div class="relative group overflow-hidden rounded-2xl border border-gray-800 hover:border-violet-500 transition-colors duration-500">
+                <!-- Photo 3 (Crowd 2) - This image will take the remaining space -->
+                <div class="row-span-1 relative group overflow-hidden rounded-2xl border border-gray-800 hover:border-violet-500 transition-colors duration-500">
                     <img src="crowd1.jpg" alt="Event Atmosphere" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <!-- Removed Text Overlay & Grayscale -->
                 </div>
             </div>
 
-            <!-- Video Gallery (Large Grid) - Now Second -->
+            <!-- Video Gallery (Large Grid) -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Video 1 -->
                 <div class="w-full bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 shadow-2xl group hover:border-violet-500 transition-all duration-500 transform hover:-translate-y-1">
