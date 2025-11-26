@@ -79,9 +79,7 @@
     <!-- Hero Section -->
     <section class="relative h-screen flex items-center justify-center hero-gradient px-4">
         <div class="text-center max-w-4xl mx-auto z-10">
-            <div class="inline-block mb-4 px-4 py-1 border border-violet-500 rounded-full bg-violet-900/20 backdrop-blur-sm animate-fade-in-up" style="animation-delay: 0.1s;">
-                <span id="hero-subtitle" class="text-violet-300 text-xs font-bold tracking-widest uppercase"></span>
-            </div>
+            <!-- Removed the "Est. 2025" subtitle block for a cleaner look -->
             <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight text-glow animate-fade-in-up" style="animation-delay: 0.3s;">
                 <span id="hero-title-part1"></span><br>
                 <span id="hero-title-part2" class="text-violet-500"></span>
@@ -275,7 +273,6 @@
         // =================================================================
         const PAGE_CONTENT = {
             // --- HERO SECTION ---
-            hero_subtitle: "Est. 2025",
             hero_title_part1: "More Than Just Music.",
             hero_title_part2: "It's an Experience.",
             hero_description: "Let's EXCEED your expectations.",
@@ -356,7 +353,7 @@
         // Function to inject all content into the DOM
         function loadContent() {
             // Hero
-            document.getElementById('hero-subtitle').textContent = PAGE_CONTENT.hero_subtitle;
+            // Subtitle element removal handled in HTML, no need to set content
             document.getElementById('hero-title-part1').textContent = PAGE_CONTENT.hero_title_part1;
             document.getElementById('hero-title-part2').textContent = PAGE_CONTENT.hero_title_part2;
             document.getElementById('hero-description').textContent = PAGE_CONTENT.hero_description;
