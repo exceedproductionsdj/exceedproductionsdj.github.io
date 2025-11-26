@@ -108,7 +108,8 @@
                     <div class="col-span-2 md:col-span-1 md:flex-1 relative max-w-3xl rounded-none md:rounded-2xl border-y md:border border-gray-800 overflow-hidden shadow-2xl">
                         <div class="relative w-full bg-gray-900">
                             <!-- Image -->
-                            <img id="carousel-img" src="fullbody2.jpg" alt="Gallery Image" class="w-full h-auto block transition-opacity duration-300">
+                            <!-- Fixed Height: h-[300px] mobile, h-[500px] desktop + object-cover to prevent jumping -->
+                            <img id="carousel-img" src="fullbody2.jpg" alt="Gallery Image" class="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover block transition-opacity duration-300">
                             
                             <!-- Indicators (Inside at bottom) -->
                             <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10" id="photo-indicators">
