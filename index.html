@@ -95,19 +95,17 @@
 
     <!-- About Me & Gallery Section -->
     <section id="about" class="py-24 bg-black overflow-hidden">
-        <!-- Reduced px on mobile to allow gallery to be wider -->
-        <div class="max-w-6xl mx-auto px-1 sm:px-6 lg:px-8">
+        <!-- Removed px on mobile to allow full width -->
+        <div class="max-w-6xl mx-auto px-0 sm:px-6 lg:px-8">
             
             <!-- CAROUSEL: Photos (Moved Above Bio) -->
             <div class="mb-20">
-                <div class="flex items-center justify-center gap-2 md:gap-6">
-                    <!-- Left Arrow (Outside) -->
-                    <button id="prev-photo" class="flex-none w-8 h-8 md:w-12 md:h-12 bg-gray-900 border border-gray-700 hover:border-violet-500 hover:text-violet-500 rounded-full flex items-center justify-center text-gray-400 transition-all focus:outline-none">
-                        <i class="fas fa-chevron-left text-sm md:text-xl"></i>
-                    </button>
-
-                    <!-- Frame & Image -->
-                    <div class="flex-1 relative max-w-3xl rounded-2xl border border-gray-800 overflow-hidden shadow-2xl">
+                <!-- Mobile: Grid (Buttons below) | Desktop: Flex (Buttons sides) -->
+                <div class="grid grid-cols-2 gap-4 md:flex md:items-center md:justify-center md:gap-6">
+                    
+                    <!-- Frame & Image (Takes full width on mobile) -->
+                    <!-- Mobile: col-span-2 puts it on top row full width -->
+                    <div class="col-span-2 md:col-span-1 md:flex-1 relative max-w-3xl rounded-none md:rounded-2xl border-y md:border border-gray-800 overflow-hidden shadow-2xl">
                         <div class="relative w-full bg-gray-900">
                             <!-- Image -->
                             <img id="carousel-img" src="fullbody2.jpg" alt="Gallery Image" class="w-full h-auto block transition-opacity duration-300">
@@ -119,9 +117,16 @@
                         </div>
                     </div>
 
-                    <!-- Right Arrow (Outside) -->
-                    <button id="next-photo" class="flex-none w-8 h-8 md:w-12 md:h-12 bg-gray-900 border border-gray-700 hover:border-violet-500 hover:text-violet-500 rounded-full flex items-center justify-center text-gray-400 transition-all focus:outline-none">
-                        <i class="fas fa-chevron-right text-sm md:text-xl"></i>
+                    <!-- Left Arrow -->
+                    <!-- Mobile: Order 2 (Bottom Left) -->
+                    <button id="prev-photo" class="order-2 md:order-first justify-self-center flex-none w-12 h-12 bg-gray-900 border border-gray-700 hover:border-violet-500 hover:text-violet-500 rounded-full flex items-center justify-center text-gray-400 transition-all focus:outline-none">
+                        <i class="fas fa-chevron-left text-xl"></i>
+                    </button>
+
+                    <!-- Right Arrow -->
+                    <!-- Mobile: Order 3 (Bottom Right) -->
+                    <button id="next-photo" class="order-3 md:order-last justify-self-center flex-none w-12 h-12 bg-gray-900 border border-gray-700 hover:border-violet-500 hover:text-violet-500 rounded-full flex items-center justify-center text-gray-400 transition-all focus:outline-none">
+                        <i class="fas fa-chevron-right text-xl"></i>
                     </button>
                 </div>
             </div>
@@ -137,14 +142,11 @@
 
             <!-- CAROUSEL: Videos -->
             <div>
-                <div class="flex items-center justify-center gap-2 md:gap-6">
-                    <!-- Left Arrow (Outside) -->
-                    <button id="prev-video" class="flex-none w-8 h-8 md:w-12 md:h-12 bg-gray-900 border border-gray-700 hover:border-violet-500 hover:text-violet-500 rounded-full flex items-center justify-center text-gray-400 transition-all focus:outline-none">
-                        <i class="fas fa-chevron-left text-sm md:text-xl"></i>
-                    </button>
-
+                <!-- Mobile: Grid (Buttons below) | Desktop: Flex (Buttons sides) -->
+                <div class="grid grid-cols-2 gap-4 md:flex md:items-center md:justify-center md:gap-6">
+                    
                     <!-- Frame & Video -->
-                    <div class="flex-1 relative max-w-4xl rounded-2xl border border-gray-800 overflow-hidden shadow-2xl bg-gray-900">
+                    <div class="col-span-2 md:col-span-1 md:flex-1 relative max-w-4xl rounded-none md:rounded-2xl border-y md:border border-gray-800 overflow-hidden shadow-2xl bg-gray-900">
                         <div class="relative aspect-video bg-black">
                             <video id="carousel-video" controls class="w-full h-full object-contain" preload="metadata">
                                 <source src="specialdancevideo.mp4" type="video/mp4">
@@ -153,9 +155,14 @@
                         </div>
                     </div>
 
-                    <!-- Right Arrow (Outside) -->
-                    <button id="next-video" class="flex-none w-8 h-8 md:w-12 md:h-12 bg-gray-900 border border-gray-700 hover:border-violet-500 hover:text-violet-500 rounded-full flex items-center justify-center text-gray-400 transition-all focus:outline-none">
-                        <i class="fas fa-chevron-right text-sm md:text-xl"></i>
+                    <!-- Left Arrow -->
+                    <button id="prev-video" class="order-2 md:order-first justify-self-center flex-none w-12 h-12 bg-gray-900 border border-gray-700 hover:border-violet-500 hover:text-violet-500 rounded-full flex items-center justify-center text-gray-400 transition-all focus:outline-none">
+                        <i class="fas fa-chevron-left text-xl"></i>
+                    </button>
+
+                    <!-- Right Arrow -->
+                    <button id="next-video" class="order-3 md:order-last justify-self-center flex-none w-12 h-12 bg-gray-900 border border-gray-700 hover:border-violet-500 hover:text-violet-500 rounded-full flex items-center justify-center text-gray-400 transition-all focus:outline-none">
+                        <i class="fas fa-chevron-right text-xl"></i>
                     </button>
                 </div>
             </div>
