@@ -108,10 +108,31 @@
                 </div>
             </div>
 
-            <!-- Removed "Visual Experience" Titles for cleaner look -->
+            <!-- Photo Gallery (Large Mosaic) - Now First -->
+            <!-- Increased row height to 300px mobile / 400px desktop for MUCH bigger photos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-[300px] md:auto-rows-[450px] mb-12">
+                
+                <!-- Photo 1 (Tall - Full Body) spans 2 rows on desktop -->
+                <div class="row-span-2 relative group overflow-hidden rounded-2xl border border-gray-800 hover:border-violet-500 transition-colors duration-500">
+                    <img src="fullbody2.jpg" alt="DJ Performing" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <!-- Removed Text Overlay & Grayscale -->
+                </div>
 
-            <!-- Video Gallery (Large Grid) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Photo 2 (Crowd) -->
+                <div class="relative group overflow-hidden rounded-2xl border border-gray-800 hover:border-violet-500 transition-colors duration-500">
+                    <img src="crowd2.jpg" alt="Crowd Energy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <!-- Removed Text Overlay & Grayscale -->
+                </div>
+
+                <!-- Photo 3 (Crowd 2) -->
+                <div class="relative group overflow-hidden rounded-2xl border border-gray-800 hover:border-violet-500 transition-colors duration-500">
+                    <img src="crowd1.jpg" alt="Event Atmosphere" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <!-- Removed Text Overlay & Grayscale -->
+                </div>
+            </div>
+
+            <!-- Video Gallery (Large Grid) - Now Second -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Video 1 -->
                 <div class="w-full bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 shadow-2xl group hover:border-violet-500 transition-all duration-500 transform hover:-translate-y-1">
                     <div class="aspect-video bg-black relative">
@@ -132,29 +153,6 @@
                         </video>
                     </div>
                     <!-- Removed Title Bar -->
-                </div>
-            </div>
-
-            <!-- Photo Gallery (Large Mosaic) -->
-            <!-- Increased row height to 300px mobile / 400px desktop for MUCH bigger photos -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-[300px] md:auto-rows-[450px]">
-                
-                <!-- Photo 1 (Tall - Full Body) spans 2 rows on desktop -->
-                <div class="row-span-2 relative group overflow-hidden rounded-2xl border border-gray-800 hover:border-violet-500 transition-colors duration-500">
-                    <img src="fullbody2.jpg" alt="DJ Performing" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0">
-                    <!-- Removed Text Overlay -->
-                </div>
-
-                <!-- Photo 2 (Crowd) -->
-                <div class="relative group overflow-hidden rounded-2xl border border-gray-800 hover:border-violet-500 transition-colors duration-500">
-                    <img src="crowd2.jpg" alt="Crowd Energy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0">
-                    <!-- Removed Text Overlay -->
-                </div>
-
-                <!-- Photo 3 (Crowd 2) -->
-                <div class="relative group overflow-hidden rounded-2xl border border-gray-800 hover:border-violet-500 transition-colors duration-500">
-                    <img src="crowd1.jpg" alt="Event Atmosphere" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0">
-                    <!-- Removed Text Overlay -->
                 </div>
             </div>
 
