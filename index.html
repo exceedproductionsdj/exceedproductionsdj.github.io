@@ -498,3 +498,35 @@
                         
                         checkRateLimit(); 
                     } else {
+                        const data = await response.json();
+                        if (Object.hasOwn(data, 'errors')) {
+                            formStatus.innerText = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            formStatus.innerText = "Oops! There was a problem sending your form. Please check your Formspree setup.";
+                        }
+                        formStatus.classList.remove('hidden');
+                        formStatus.classList.add('text-red-500');
+                    }
+                } catch (error) {
+                    formStatus.innerText = "Oops! Network error occurred.";
+                    formStatus.classList.remove('hidden');
+                    formStatus.classList.add('text-red-500');
+                } finally {
+                    if (!submitButton.disabled) {
+                        submitButton.innerText = originalText;
+                        submitButton.disabled = false;
+                    }
+                }
+            });
+
+            resetBtn.addEventListener('click', () => {
+                clearInterval(countdownInterval);
+                successMsg.classList.add('hidden');
+                form.classList.remove('hidden');
+                formStatus.classList.add('hidden');
+                checkRateLimit(); 
+            });
+        });
+    </script>
+</body>
+</html>
