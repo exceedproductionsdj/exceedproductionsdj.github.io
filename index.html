@@ -109,7 +109,8 @@
                         <div class="relative w-full bg-gray-900">
                             <!-- Image -->
                             <!-- Fixed Height: h-[300px] mobile, h-[500px] desktop + object-cover to prevent jumping -->
-                            <img id="carousel-img" src="fullbody2.jpg" alt="Gallery Image" class="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover block transition-opacity duration-300">
+                            <!-- Added object-center as default -->
+                            <img id="carousel-img" src="fullbody2.jpg" alt="Gallery Image" class="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover object-center block transition-opacity duration-300">
                             
                             <!-- Indicators (Inside at bottom) -->
                             <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10" id="photo-indicators">
@@ -428,6 +429,16 @@
                 carouselImg.style.opacity = '0.5';
                 setTimeout(() => {
                     carouselImg.src = photoSources[currentPhotoIndex];
+                    
+                    // Custom positioning for crowd2.jpg
+                    if (photoSources[currentPhotoIndex] === 'crowd2.jpg') {
+                        carouselImg.classList.remove('object-center');
+                        carouselImg.classList.add('object-right');
+                    } else {
+                        carouselImg.classList.remove('object-right');
+                        carouselImg.classList.add('object-center');
+                    }
+
                     carouselImg.style.opacity = '1';
                     updateIndicators();
                 }, 200);
