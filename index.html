@@ -95,7 +95,7 @@
 
     <!-- About Me & Gallery Section -->
     <section id="about" class="py-24 bg-black overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Bio (Centered & Prominent) -->
             <div class="max-w-3xl mx-auto text-center mb-16">
@@ -107,56 +107,56 @@
                 </div>
             </div>
 
-            <!-- Horizontal Scrollable Photo Gallery -->
-            <div class="mb-16">
-                <h3 class="text-xl font-bold text-white mb-4 pl-1">Photos</h3>
-                <!-- Flex container with overflow-x-auto for horizontal scrolling -->
-                <div class="flex overflow-x-auto gap-6 pb-6 snap-x snap-mandatory">
-                    
-                    <!-- Photo 1 (Tall Image) -->
-                    <!-- h-[500px] ensures consistent height, w-auto allows full width to show -->
-                    <div class="flex-none h-[500px] w-auto snap-center relative group overflow-hidden rounded-2xl border border-gray-800">
-                        <img src="fullbody2.jpg" alt="DJ Performing" class="h-full w-auto max-w-none object-cover">
+            <!-- CAROUSEL: Photos -->
+            <div class="mb-20">
+                <h3 class="text-xl font-bold text-white mb-6 text-center md:text-left border-l-4 border-violet-500 pl-4">Photos</h3>
+                
+                <div class="relative bg-gray-900 rounded-2xl border border-gray-800 overflow-hidden shadow-2xl">
+                    <!-- Image Container -->
+                    <div class="relative w-full min-h-[300px] flex items-center justify-center bg-black">
+                        <!-- Default Image -->
+                        <img id="carousel-img" src="fullbody2.jpg" alt="Gallery Image" class="w-full h-auto object-contain transition-opacity duration-300">
                     </div>
 
-                    <!-- Photo 2 (Crowd) -->
-                    <div class="flex-none h-[500px] w-auto snap-center relative group overflow-hidden rounded-2xl border border-gray-800">
-                        <img src="crowd2.jpg" alt="Crowd Energy" class="h-full w-auto max-w-none object-cover">
-                    </div>
-                    
-                    <!-- Photo 3 (Crowd 2) -->
-                    <div class="flex-none h-[500px] w-auto snap-center relative group overflow-hidden rounded-2xl border border-gray-800">
-                        <img src="crowd1.jpg" alt="Event Atmosphere" class="h-full w-auto max-w-none object-cover">
-                    </div>
+                    <!-- Left Arrow -->
+                    <button id="prev-photo" class="absolute top-1/2 left-4 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-black/50 hover:bg-violet-600/80 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all z-10 focus:outline-none">
+                        <i class="fas fa-chevron-left text-lg md:text-xl"></i>
+                    </button>
 
+                    <!-- Right Arrow -->
+                    <button id="next-photo" class="absolute top-1/2 right-4 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-black/50 hover:bg-violet-600/80 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all z-10 focus:outline-none">
+                        <i class="fas fa-chevron-right text-lg md:text-xl"></i>
+                    </button>
+
+                    <!-- Indicators -->
+                    <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10" id="photo-indicators">
+                        <!-- Injected by JS -->
+                    </div>
                 </div>
             </div>
 
-            <!-- Horizontal Scrollable Video Gallery -->
+            <!-- CAROUSEL: Videos -->
             <div>
-                <h3 class="text-xl font-bold text-white mb-4 pl-1">Videos</h3>
-                <div class="flex overflow-x-auto gap-6 pb-6 snap-x snap-mandatory">
-                    
-                    <!-- Video 1 -->
-                    <div class="flex-none w-[85vw] md:w-[600px] snap-center bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 shadow-2xl">
-                        <div class="aspect-video bg-black relative">
-                            <video controls class="w-full h-full object-cover" preload="metadata">
-                                <source src="specialdancevideo.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
+                <h3 class="text-xl font-bold text-white mb-6 text-center md:text-left border-l-4 border-violet-500 pl-4">Videos</h3>
+                
+                <div class="relative bg-gray-900 rounded-2xl border border-gray-800 overflow-hidden shadow-2xl max-w-4xl mx-auto">
+                    <!-- Video Container (Aspect Ratio for Video) -->
+                    <div class="relative aspect-video bg-black">
+                        <video id="carousel-video" controls class="w-full h-full object-contain" preload="metadata">
+                            <source src="specialdancevideo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
 
-                    <!-- Video 2 -->
-                    <div class="flex-none w-[85vw] md:w-[600px] snap-center bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 shadow-2xl">
-                        <div class="aspect-video bg-black relative">
-                            <video controls class="w-full h-full object-cover" preload="metadata">
-                                <source src="opendancevideo.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
+                    <!-- Navigation Controls (Outside video controls area) -->
+                    <div class="absolute top-1/2 w-full flex justify-between px-4 -translate-y-1/2 pointer-events-none">
+                        <button id="prev-video" class="w-10 h-10 md:w-12 md:h-12 bg-black/50 hover:bg-violet-600/80 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all pointer-events-auto cursor-pointer focus:outline-none shadow-lg">
+                            <i class="fas fa-chevron-left text-lg md:text-xl"></i>
+                        </button>
+                        <button id="next-video" class="w-10 h-10 md:w-12 md:h-12 bg-black/50 hover:bg-violet-600/80 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all pointer-events-auto cursor-pointer focus:outline-none shadow-lg">
+                            <i class="fas fa-chevron-right text-lg md:text-xl"></i>
+                        </button>
                     </div>
-
                 </div>
             </div>
 
@@ -402,6 +402,78 @@
                     if (mobileMenu) mobileMenu.classList.add('hidden');
                 });
             });
+
+            // --- CAROUSEL LOGIC ---
+
+            // --- PHOTO CAROUSEL ---
+            const photoSources = [
+                'fullbody2.jpg',
+                'crowd2.jpg',
+                'crowd1.jpg'
+            ];
+            let currentPhotoIndex = 0;
+            const carouselImg = document.getElementById('carousel-img');
+            const photoIndicatorsContainer = document.getElementById('photo-indicators');
+
+            function updatePhoto() {
+                // Fade out slightly
+                carouselImg.style.opacity = '0.5';
+                setTimeout(() => {
+                    carouselImg.src = photoSources[currentPhotoIndex];
+                    carouselImg.style.opacity = '1';
+                    updateIndicators();
+                }, 200);
+            }
+
+            function updateIndicators() {
+                photoIndicatorsContainer.innerHTML = '';
+                photoSources.forEach((_, idx) => {
+                    const dot = document.createElement('div');
+                    dot.className = `w-2 h-2 rounded-full transition-colors ${idx === currentPhotoIndex ? 'bg-violet-500' : 'bg-gray-500'}`;
+                    photoIndicatorsContainer.appendChild(dot);
+                });
+            }
+
+            document.getElementById('prev-photo').addEventListener('click', () => {
+                currentPhotoIndex = (currentPhotoIndex === 0) ? photoSources.length - 1 : currentPhotoIndex - 1;
+                updatePhoto();
+            });
+
+            document.getElementById('next-photo').addEventListener('click', () => {
+                currentPhotoIndex = (currentPhotoIndex === photoSources.length - 1) ? 0 : currentPhotoIndex + 1;
+                updatePhoto();
+            });
+
+            // Initialize photo indicators
+            updateIndicators();
+
+            // --- VIDEO CAROUSEL ---
+            const videoSources = [
+                'specialdancevideo.mp4',
+                'opendancevideo.mp4'
+            ];
+            let currentVideoIndex = 0;
+            const carouselVideo = document.getElementById('carousel-video');
+
+            function updateVideo() {
+                // Pause current video
+                carouselVideo.pause();
+                // Change source
+                carouselVideo.querySelector('source').src = videoSources[currentVideoIndex];
+                // Reload video element to pick up new source
+                carouselVideo.load();
+            }
+
+            document.getElementById('prev-video').addEventListener('click', () => {
+                currentVideoIndex = (currentVideoIndex === 0) ? videoSources.length - 1 : currentVideoIndex - 1;
+                updateVideo();
+            });
+
+            document.getElementById('next-video').addEventListener('click', () => {
+                currentVideoIndex = (currentVideoIndex === videoSources.length - 1) ? 0 : currentVideoIndex + 1;
+                updateVideo();
+            });
+
 
             // --- FORM LOGIC ---
             const form = document.getElementById('contactForm');
